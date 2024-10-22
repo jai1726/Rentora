@@ -11,9 +11,7 @@ export default function Login() {
 
   const fields = [
     { label: 'Email', type: 'email', name: 'email', placeholder: 'Enter your email' },
-    { label: 'Name', type: 'text', name: 'name', placeholder: 'Enter your name' },
     { label: 'Password', type: 'password', name: 'password', placeholder: 'Enter your password' },
-    { label: 'Confirm Password', type: 'password', name: 'confirmPassword', placeholder: 'Confirm your password' }
   ];
 
   const handleChange = (e) => {

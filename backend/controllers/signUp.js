@@ -19,13 +19,16 @@ const bcrypt=require('bcrypt');
     }
 
     if (existingUser) return res.status(200).json({ message: "User already , Instead Login " });
-    let hashedPassword=bcrypt.hashSync(password);
+
+    const saltRounds = 10;
+    let hashedPassword=bcrypt.hashSync(password,saltRounds);
 
     const user = new User({
         email, 
         name,
         password:hashedPassword,
-        phoneNo
+        phoneNo,
+        posts:[]
     });
 
     try {

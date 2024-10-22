@@ -2,23 +2,32 @@ const mongoose =require('mongoose');
 
 const postSchema= new mongoose.Schema({
     description:{
-        type:string,
+        type:String,
         required:true,
         unique:true
        },
+       images:{
+        type:String,
+        required:true 
+       },
        location:{
-           type:string,
+           type:String,
            required:true 
        },
-       rent:{
-        type:string,
+        rent:{
+        type:String,
         required:true
        },
        contactInfo:{
-           type:string,
+           type:String,
            required:true,
            length:10
+       },
+       user:{
+        type:mongoose.Types.ObjectId,
+        reference:"User",
+        required:true
        }
 })
 const Post= mongoose.model("Post",postSchema);
-module.exports = Post ;
+module.exports = Post;

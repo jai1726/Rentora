@@ -18,7 +18,12 @@ const userSchema= new mongoose.Schema({
     phoneNo:{
         type:String,
         required:true
-    }
+    },
+    posts:[{
+        type:mongoose.Types.ObjectId,
+        ref:"Post",
+        required:true
+    }]
 }) 
 const User=mongoose.model("User",userSchema);
 module.exports = User;

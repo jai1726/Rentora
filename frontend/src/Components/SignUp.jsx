@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import Card from './Card';
 
-export default function Login() {
+export default function SignUp() {
   const [formData, setFormData] = useState({
     email: '',
+    name: '',
     password: '',
+    confirmPassword: ''
   });
 
   const fields = [
     { label: 'Email', type: 'email', name: 'email', placeholder: 'Enter your email' },
+    { label: 'Name', type: 'text', name: 'name', placeholder: 'Enter your name' },
     { label: 'Password', type: 'password', name: 'password', placeholder: 'Enter your password' },
+    { label: 'Confirm Password', type: 'password', name: 'confirmPassword', placeholder: 'Confirm your password' }
   ];
 
   const handleChange = (e) => {
@@ -23,8 +27,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const ads = await JSON.stringify(formData);
-      const response = await fetch('http://localhost:7000/api/user/login', {
+      const response = await fetch('http://localhost:7000/api/user/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -46,7 +49,7 @@ export default function Login() {
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100 w-full">
       <Card
-        header={<h1 className="text-2xl font-bold">Login</h1>}
+        header={<h1 className="text-2xl font-bold">Sign Up</h1>}
         content={
           <form className="space-y-4" onSubmit={handleSubmit}>
             {fields.map((field, index) => (
@@ -64,7 +67,7 @@ export default function Login() {
               </div>
             ))}<div className='flex flex-row'>
             <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 justify-end">
-              Login
+              Sign Up
             </button></div>
           </form>
         }

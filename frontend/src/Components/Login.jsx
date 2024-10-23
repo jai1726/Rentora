@@ -4,9 +4,7 @@ import Card from './Card';
 export default function Login() {
   const [formData, setFormData] = useState({
     email: '',
-    name: '',
     password: '',
-    confirmPassword: ''
   });
 
   const fields = [
@@ -25,7 +23,8 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/url/login', {
+      const ads = await JSON.stringify(formData);
+      const response = await fetch('http://localhost:7000/api/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

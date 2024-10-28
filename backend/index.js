@@ -5,6 +5,7 @@ const cors = require('cors');
 const router = require('./routes/User.Routes.js');
 const postRouter = require('./routes/Post.Routes.js');
 
+
 dotenv.config();
 
 const PORT = process.env.PORT || 4000;
@@ -18,6 +19,8 @@ connectDB();
 
 app.use("/api/user", router);
 app.use("/api/post", postRouter);
+
+
 
 
 app.use('/', (req, res) => {

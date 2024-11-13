@@ -1,8 +1,11 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
-import Navbar from './Components/Navbar';
+// import Navbar from './Components/Navbar';
 import Carousel from './Components/Carousel';
+import HomePage from './Components/Home';
+import AddPost from './Components/AddPost';
 
 function App() {
   const images = [
@@ -12,13 +15,22 @@ function App() {
   ];
   
   return (
-    <div>
-      Hi
-      <Navbar/>
-      <Carousel images={images} />
-      <Login/>
-      <SignUp/>
-    </div>
+    
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/signup" element={<SignUp/>}/>
+           <Route path="/addPost" element={<AddPost/>}/>
+          
+      
+      {/* <Carousel images={images} /> */}
+      
+      
+        </Routes>
+      </BrowserRouter>
+     
+  
   );
 }
 

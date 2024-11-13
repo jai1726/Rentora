@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Card from './Card';
+import {useNavigate }from 'react-router-dom';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ export default function SignUp() {
     { label: 'Password', type: 'password', name: 'password', placeholder: 'Enter your password' },
     { label: 'Confirm Password', type: 'password', name: 'confirmPassword', placeholder: 'Confirm your password' }
   ];
-
+const navigate=useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -38,6 +39,7 @@ export default function SignUp() {
       if (response.ok) {
         const data = await response.json();
         console.log('Login successful:', data);
+        navigate('/');
       } else {
         console.error('Login failed');
       }

@@ -23,6 +23,11 @@ const userSchema= new mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:"Post",
         required:true
+    }],
+    wishList:[{
+        type:mongoose.Types.ObjectId,
+        ref:"Post",
+        required:true
     }]
 }) 
 const User=mongoose.model("User",userSchema);

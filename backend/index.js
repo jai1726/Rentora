@@ -23,10 +23,10 @@ app.use("/api/post", postRouter);
 
 
 
-app.use('/', (req, res) => {
-    console.log("GET request received");
-    res.status(200).json({ message: "GET request working" });
-});
+// app.use('/', (req, res) => {
+//     console.log("GET request received");
+//     res.status(200).json({ message: "GET request working" });
+// });
 
 app.listen(PORT, () => {
     console.log(`app listening on http://localhost:${PORT}`);

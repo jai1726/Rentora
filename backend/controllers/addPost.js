@@ -47,7 +47,7 @@ try{
    const session=await mongoose.startSession();
    session.startTransaction();
    await post.save({session});
-    existingUser.posts.push(post);
+   existingUser.posts.push(post);
    await existingUser.save({ session });
    await session.commitTransaction();
    session.endSession();

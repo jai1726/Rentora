@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import Card from './Card';
+import {useNavigate} from 'react-router-dom';
 
 export default function Login() {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
-
+  const navigate= useNavigate();
   const fields = [
     { label: 'Email', type: 'email', name: 'email', placeholder: 'Enter your email' },
     { label: 'Password', type: 'password', name: 'password', placeholder: 'Enter your password' },
@@ -24,6 +25,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const ads = await JSON.stringify(formData);
+      console.log('Log');
       const response = await fetch('http://localhost:7000/api/user/login', {
         method: 'POST',
         headers: {
@@ -31,16 +33,23 @@ export default function Login() {
         },
         body: JSON.stringify(formData)
       });
-      
+      // console.log(response);
+    
       if (response.ok) {
+        console.log('Logined');
         const data = await response.json();
+        const token=data.token;
+        console.log(token);
+        localStorage.setItem('jwtToken', token);
         console.log('Login successful:', data);
+       navigate('/')
       } else {
         console.error('Login failed');
       }
     } catch (error) {
       console.error('Error during login:', error);
     }
+   
   };
 
   return (

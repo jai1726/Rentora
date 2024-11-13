@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 
 const login = async (req, res, next) => {
-    console.log("kogin")
+  
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -18,14 +18,14 @@ const login = async (req, res, next) => {
         existingUser = await User.findOne({ email });
     } catch (err) {
         console.log(err);
-        return res.status(404).json({ message: "error in checking user, try again" });
+        return res.status(402).json({ message: "error in checking user, try again" });
     }
 
-    if (!existingUser) return res.status(404).json({ message: "User Not exist,Login instead" });
+    if (!existingUser) return res.status(401).json({ message: "User Not exist,Login instead" });
 
     const isPasswordCorrect = bcrypt.compareSync(password, existingUser.password);
     if (!isPasswordCorrect) {
-        return res.status(404).json({ messsage: "wrong password" })
+        return res.status(403).json({ messsage: "wrong password" })
     }
 
 
